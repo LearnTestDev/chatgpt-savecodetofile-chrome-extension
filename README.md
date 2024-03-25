@@ -21,7 +21,7 @@ To install the ChatGPT SaveCodeToFile extension for Chrome on the OpenAI ChatGPT
 
 1. Navigate to the webpage with the OpenAI ChatGPT interface.
 2. Interact with the chat interface to receive responses.
-3. Below the code snippet in the response, a button "Save code to file" will appear.
+3. Below the code snippet in the response, a button "Download" will appear.
 4. Click this button, and the code will be saved in a file with a name suggested by the ChatGPT model.
 
 ## Contribution

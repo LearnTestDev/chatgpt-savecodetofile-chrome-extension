@@ -24,7 +24,7 @@ function addButton() {
   for(let element of codeElement){
     if (element.getElementsByClassName("custom-button").length === 0){
       let button = document.createElement('button');
-      button.textContent = "Save";
+      button.textContent = "Download";
       button.classList.add("custom-button");
       button.addEventListener("click",()=>{
         saveTextToFile(element.querySelector("code").innerText, getFileName(element));
