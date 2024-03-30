@@ -10,3 +10,22 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+#floatingWindow {
+  position: absolute;
+  display: none;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+#floatingWindowApllyButton{
+  border: 2px solid #000000;
+  box-shadow: 0 0 10px #000000; 
+}
+
+#floatingWindowCloseButton{
+  border: 2px solid #000000;
+  box-shadow: 0 0 10px #000000; 
+}
