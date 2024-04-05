@@ -1,22 +1,21 @@
 function saveTextToFile(text,fileName) {
-  var blob = new Blob([text], { type: "text/plain;charset=utf-8" });
-  var a = document.createElement("a");
-  a.style.display = "none";
-  document.body.appendChild(a);
+  var blob = new Blob([text], { type: "application/octet-stream" });
 
   var url = window.URL.createObjectURL(blob);
-  a.href = url;
-  a.download = fileName;
-  a.click();
-  window.URL.revokeObjectURL(url);
+
+  chrome.runtime.sendMessage({
+    action: 'downloadFile',
+    url: url,
+    filename: fileName
+  },
+  (response)=>{
+    window.URL.revokeObjectURL(url);
+  });
 }
 
 function getFileName(element) {
-  let fileNameElement = element.previousElementSibling.querySelector("code");
-  if (fileNameElement === null){
-    return "undefined.txt";
-  }
-  return fileNameElement.innerText;
+  // to do
+  return "";
 }
 
 function deleteNodeAndChild(node){
@@ -37,7 +36,7 @@ function showFileSaveWindow(openButton, defaultFileName, textToSave){
 
   fileNameField.id = "floatingWindowInput";
   fileNameField.type = "text";
-  fileNameField.placeholder = "File Name";
+  fileNameField.placeholder = "File Path";
   fileNameField.value = defaultFileName;
 
   apllyButton.id = "floatingWindowApllyButton";
