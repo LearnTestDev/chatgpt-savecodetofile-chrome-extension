@@ -30,4 +30,4 @@ We welcome contributions! If you find any issues or have suggestions for improve
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [The Unlicense](LICENSE).
