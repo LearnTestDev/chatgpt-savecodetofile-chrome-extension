@@ -13,11 +13,6 @@ function saveTextToFile(text,fileName) {
   });
 }
 
-function getFileName(element) {
-  // to do
-  return "";
-}
-
 function deleteNodeAndChild(node){
   while(node.firstChild){
     node.removeChild(node.firstChild);
@@ -25,11 +20,12 @@ function deleteNodeAndChild(node){
   node.parentNode.removeChild(node);
 }
 
-function showFileSaveWindow(openButton, defaultFileName, textToSave){
+FILE_PATH = ""; 
+function showFileSaveWindow(openButton, textToSave){
 
   let floatingWindow = document.createElement('div');
   let fileNameField = document.createElement('input');
-  let apllyButton = document.createElement('button');
+  let applyButton = document.createElement('button');
   let closeButton = document.createElement('button');
 
   floatingWindow.id = "floatingWindow";
@@ -37,11 +33,12 @@ function showFileSaveWindow(openButton, defaultFileName, textToSave){
   fileNameField.id = "floatingWindowInput";
   fileNameField.type = "text";
   fileNameField.placeholder = "File Path";
-  fileNameField.value = defaultFileName;
+  fileNameField.value = FILE_PATH;
 
-  apllyButton.id = "floatingWindowApllyButton";
-  apllyButton.textContent = "Ok";
-  apllyButton.addEventListener("click",()=>{
+  applyButton.id = "floatingWindowApplyButton";
+  applyButton.textContent = "Ok";
+  applyButton.addEventListener("click",()=>{
+    FILE_PATH = fileNameField.value;
     saveTextToFile(textToSave, fileNameField.value);
     floatingWindow.style.display = "none";
     deleteNodeAndChild(floatingWindow);
@@ -55,7 +52,7 @@ function showFileSaveWindow(openButton, defaultFileName, textToSave){
   });
 
   floatingWindow.appendChild(fileNameField);
-  floatingWindow.appendChild(apllyButton);
+  floatingWindow.appendChild(applyButton);
   floatingWindow.appendChild(closeButton);
   document.body.appendChild(floatingWindow);
 
@@ -75,7 +72,7 @@ function addButton() {
       button.textContent = "Download";
       button.classList.add("custom-button");
       button.addEventListener("click",()=>{
-        showFileSaveWindow(button, getFileName(element), element.querySelector("code").innerText);
+        showFileSaveWindow(button, element.querySelector("code").innerText);
       });
       element.appendChild(button);
     }
